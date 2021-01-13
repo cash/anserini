@@ -1,0 +1,14 @@
+<top>
+<num> C1 </num>
+<EN-title> simple test </EN-title>
+<EN-desc> Find some news articles </EN-desc>
+<EN-narr> Find as many as possible news articles </EN-narr>
+</top>
+
+<top>
+<num> C2 </num>
+<EN-title> another simple test </EN-title>
+<EN-desc> Find more news articles </EN-desc>
+<EN-narr> Find as many as possible news articles again. </EN-narr>
+</top>
+
