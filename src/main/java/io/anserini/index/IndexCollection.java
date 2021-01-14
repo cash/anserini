@@ -57,6 +57,7 @@ import org.apache.lucene.analysis.de.GermanAnalyzer;
 import org.apache.lucene.analysis.es.SpanishAnalyzer;
 import org.apache.lucene.analysis.fr.FrenchAnalyzer;
 import org.apache.lucene.analysis.hi.HindiAnalyzer;
+import org.apache.lucene.analysis.ru.RussianAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.ConcurrentMergeScheduler;
 import org.apache.lucene.index.DocValuesType;
@@ -749,6 +750,7 @@ public final class IndexCollection {
       final BengaliAnalyzer bengaliAnalyzer = new BengaliAnalyzer();
       final GermanAnalyzer germanAnalyzer = new GermanAnalyzer();
       final SpanishAnalyzer spanishAnalyzer = new SpanishAnalyzer();
+      final RussianAnalyzer russianAnalyzer = new RussianAnalyzer();
       final DefaultEnglishAnalyzer analyzer;
       if (args.keepStopwords) {
         analyzer = DefaultEnglishAnalyzer.newStemmingInstance(args.stemmer, CharArraySet.EMPTY_SET);
@@ -774,6 +776,8 @@ public final class IndexCollection {
         config = new IndexWriterConfig(hindiAnalyzer);
       } else if (args.language.equals("bn")) {
         config = new IndexWriterConfig(bengaliAnalyzer);
+      } else if (args.language.equals("ru")) {
+        config = new IndexWriterConfig(russianAnalyzer);
       } else if (args.language.equals("de")) {
         config = new IndexWriterConfig(germanAnalyzer);
       } else if (args.language.equals("es")) {

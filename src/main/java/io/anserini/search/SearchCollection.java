@@ -51,6 +51,7 @@ import org.apache.lucene.analysis.de.GermanAnalyzer;
 import org.apache.lucene.analysis.es.SpanishAnalyzer;
 import org.apache.lucene.analysis.fr.FrenchAnalyzer;
 import org.apache.lucene.analysis.hi.HindiAnalyzer;
+import org.apache.lucene.analysis.ru.RussianAnalyzer;
 import org.apache.lucene.document.LongPoint;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
@@ -294,6 +295,9 @@ public final class SearchCollection implements Closeable {
     } else if (args.language.equals("bn")) {
       analyzer = new BengaliAnalyzer();
       LOG.info("Language: bn");
+    } else if (args.language.equals("ru")) {
+      analyzer = new RussianAnalyzer();
+      LOG.info("Language: ru");
     } else if (args.language.equals("de")) {
       analyzer = new GermanAnalyzer();
       LOG.info("Language: de");

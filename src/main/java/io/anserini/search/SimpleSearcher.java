@@ -39,6 +39,7 @@ import org.apache.lucene.analysis.de.GermanAnalyzer;
 import org.apache.lucene.analysis.es.SpanishAnalyzer;
 import org.apache.lucene.analysis.fr.FrenchAnalyzer;
 import org.apache.lucene.analysis.hi.HindiAnalyzer;
+import org.apache.lucene.analysis.ru.RussianAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
@@ -237,6 +238,8 @@ public class SimpleSearcher implements Closeable {
       this.analyzer = new HindiAnalyzer();
     } else if (language.equals("bn")) {
       this.analyzer = new BengaliAnalyzer();
+    } else if (language.equals("ru")) {
+      this.analyzer = new RussianAnalyzer();
     } else if (language.equals("de")) {
       this.analyzer = new GermanAnalyzer();
     } else if (language.equals("es")) {
