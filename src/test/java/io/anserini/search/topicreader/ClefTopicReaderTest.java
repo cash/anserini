@@ -37,9 +37,13 @@ public class ClefTopicReaderTest {
     assertEquals(2, topics.keySet().size());
     assertEquals(1, (int)topics.firstKey());
     assertEquals("simple test", topics.get(topics.firstKey()).get("title"));
+    assertEquals("Find some news articles", topics.get(topics.firstKey()).get("description"));
+    assertEquals("Find as many as possible news articles", topics.get(topics.firstKey()).get("narrative"));
 
     assertEquals(2, (int)topics.lastKey());
     assertEquals("another simple test", topics.get(topics.lastKey()).get("title"));
+    assertEquals("Find more news articles", topics.get(topics.lastKey()).get("description"));
+    assertEquals("Find as many as possible news articles again.", topics.get(topics.lastKey()).get("narrative"));
   }
 
 }
