@@ -28,6 +28,9 @@ import java.util.regex.Pattern;
 
 /**
  * Topic reader for CLEF SGML topics with title, description, and narrative fields.
+ * The CLEF SGML files use both start and end tags.
+ * The fields are on a single line.
+ * The field names include the language code.
  */
 public class ClefTopicReader extends TopicReader<Integer> {
 
@@ -104,33 +107,15 @@ public class ClefTopicReader extends TopicReader<Integer> {
         k = sb.indexOf(">");
         String title = sb.substring(k + 1).trim();
 
-        // Read the description...
-        read(bRdr, "<" + lang + "-desc>", null, false, false);
-        sb.setLength(0);
-        String line = null;
-        while ((line = bRdr.readLine()) != null) {
-          if (line.startsWith("<" + lang + "-narr>"))
-            break;
-          if (sb.length() > 0) sb.append(' ');
-          sb.append(line);
-        }
-        String description = sb.toString().trim();
+        // Read the description
+        sb = read(bRdr, "<" + lang + "-desc>", null, true, false);
+        k = sb.indexOf(">");
+        String description = sb.substring(k + 1).trim();
 
-        // Read the narrative...
-        sb.setLength(0);
-        if (line.endsWith("</" + lang + "-narr>")) {
-          // This means that the narrative is on a single line, like '<EN-narr>....</EN-narr>'
-          sb.append(line);
-        } else {
-          // Otherwise, read until closing '</top>' tag.
-          while ((line = bRdr.readLine()) != null) {
-            if (line.startsWith("</top>"))
-              break;
-            if (sb.length() > 0) sb.append(' ');
-            sb.append(line);
-          }
-        }
-        String narrative = sb.toString().trim();
+        // Read the narrative
+        sb = read(bRdr, "<" + lang + "-narr>", null, true, false);
+        k = sb.indexOf(">");
+        String narrative = sb.substring(k + 1).trim();
 
         // clean up and save topic
         id = id.replaceAll("[^0-9]", "");
