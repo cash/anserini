@@ -162,6 +162,10 @@
               <id>ApproximateNearestNeighborSearch</id>
             </program>
             <program>
+              <mainClass>io.anserini.ann.ApproximateNearestNeighborSearchCollection</mainClass>
+              <id>ApproximateNearestNeighborSearchCollection</id>
+            </program>
+            <program>
               <mainClass>io.anserini.ann.ApproximateNearestNeighborEval</mainClass>
               <id>ApproximateNearestNeighborEval</id>
             </program>
