@@ -107,6 +107,23 @@ public class ClefTopicReader extends TopicReader<Integer> {
         k = sb.indexOf(">");
         String title = sb.substring(k + 1).trim();
 
+        Pattern fieldPattern = Pattern.compile("<" + lang + "-([\\w-]+)>");
+        while (true) {
+          bRdr.mark(1000);
+          String line = bRdr.readLine();
+          if (line.startsWith("<" + lang + "-desc>")) {
+            bRdr.reset();
+            break;
+          }
+          Matcher matcher = fieldPattern.matcher(line);
+          if (matcher.find()) {
+            String fieldName = matcher.group(1);
+            line = line.replaceFirst("<" + lang + "-" + fieldName + ">", "").trim();
+            line = line.replaceFirst("</" + lang + "-" + fieldName + ">", "").trim();
+            fields.put(fieldName, line);
+          }
+        }
+
         // Read the description
         sb = read(bRdr, "<" + lang + "-desc>", null, true, false);
         k = sb.indexOf(">");

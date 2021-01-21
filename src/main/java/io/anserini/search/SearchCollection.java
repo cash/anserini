@@ -557,7 +557,7 @@ public final class SearchCollection implements Closeable {
   public <K> ScoredDocuments search(IndexSearcher searcher, K qid, String queryString, RerankerCascade cascade, ScoredDocuments queryQrels,
                                     boolean hasRelDocs) throws IOException {
     Query query = null;
-
+    LOG.info("Query: " + queryString);
     if (args.sdm) {
       query = new SdmQueryGenerator(args.sdm_tw, args.sdm_ow, args.sdm_uw).buildQuery(IndexArgs.CONTENTS, analyzer, queryString);
     } else {
@@ -571,8 +571,6 @@ public final class SearchCollection implements Closeable {
       }
       query = generator.buildQuery(IndexArgs.CONTENTS, analyzer, queryString);
     }
-
-    LOG.info("Query: " + queryString);
 
     TopDocs rs = new TopDocs(new TotalHits(0, TotalHits.Relation.EQUAL_TO), new ScoreDoc[]{});
     if (!isRerank || (args.rerankcutoff > 0 && args.rf_qrels == null) || (args.rf_qrels != null && !hasRelDocs)) {

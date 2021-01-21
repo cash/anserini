@@ -1,0 +1,19 @@
+<top>
+<num> C1 </num>
+<EN-title> simple test </EN-title>
+<EN-title-1> title 1 </EN-title-1>
+<EN-title-2> title "a phrase" </EN-title-2>
+<EN-title-3> title +required </EN-title-3>
+<EN-title-4> title -negative </EN-title-4>
+<EN-desc> Find some news articles </EN-desc>
+<EN-narr> Find as many as possible news articles </EN-narr>
+</top>
+
+<top>
+<num> C2 </num>
+<EN-title> another simple test </EN-title>
+<EN-title-1> second title 1 </EN-title-1>
+<EN-title-2> second title 2 </EN-title-2>
+<EN-desc> Find more news articles </EN-desc>
+<EN-narr> Find as many as possible news articles again. </EN-narr>
+</top>
